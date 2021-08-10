@@ -8,9 +8,65 @@
 
     <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="sass/style.scss">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<section class="container-left">
+		<div class="players-box">
+			<div class="player-1-name player-input">
+				<input type="text">
+			</div>
+
+			<div class="player-2-name player-input">
+				<input type="text">
+
+				<div class="button-player-2 active-bot">
+					<div class="bg-button"></div>
+					<div class="circle-button"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="type-game">
+			<p>Tipo de Partida</p>
+
+			<div class="best-of">
+				<span>Melhor de 3</span>
+
+				<div class="button-type-game active-best-of">
+					<div class="bg-button-best-of"></div>
+					<div class="circle-button-best-of"></div>
+				</div>
+
+				<span>Melhor de 5</span>
+			</div>
+		</div>
+
+		<div class="start-game">
+			<button type="button" class="button-start-game">Jogar</button>
+		</div>
+
+		<div class="match-history">
+			<p>Histórico de Partidas</p>
+
+			<div class="w1"></div>
+			<div class="w2"></div>
+		</div>
+
+		<div class="restart">
+			<button type="button" class="restart-button">Reiniciar</button>
+		</div>
+	</section>
+
+	<section class="container-center"></section>
+	
+	<section class="container-right"></section>
+
+
     
+
+
+
+	<script src="js/script.js"></script>
 </body>
 </html>
