@@ -53,9 +53,7 @@ body {
 				background-color: $background-color-1;
 				position: absolute;
 				right: 9px;
-
-				display: flex;
-				align-items: center;
+				cursor: pointer;
 
 				.circle-switch-player-2 {
 					width: 24px;
@@ -88,27 +86,26 @@ body {
 			}
 		}
 
-		.switch-bot.active-bot {
+		.switch-player-2.active-bot {
+			box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+			background-color: #bbf3d3;
 
-			.switch-player-2 {
-				box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
-				background-color: #bbf3d3;
-
-				.circle-switch-player-2 {
-					background-color: $button-background;
-					transform: translateX(24px);
-				}
+			.circle-switch-player-2 {
+				background-color: $button-background;
+				transform: translateX(24px);
 			}
+		}
 
-			.bot-name {
-				display: block;
-			}
+		.bot-name.active-bot {
+			display: block;
 		}
 	}
 
 	.type-game {
 		margin-bottom: 45px;
-		p {
+
+
+		>p {
 			font-size: 16px;
 			font-weight: 700;
 			color: $text-color-secondary;
@@ -118,17 +115,17 @@ body {
 
 		.best-of {
 			display: flex;
-			justify-content: space-evenly;
 			align-items: center;
+			justify-content: space-between;
 			background-color: red;
 
-			span {
+			p {
 				font-size: 16px;
 				color: #FFF;
 			}
 
 			.bg-switch-best-of {
-				padding: 4px;
+				padding: 3px;
 				background-color: $background-color-1;
 				border: 1px solid #fff;
 				border-radius: 100px;
@@ -228,6 +225,8 @@ body {
 	width: 44%;
 	height: 100%;
 	background-color: $background-color-2;
+
+
 }
 
 .container-right {
