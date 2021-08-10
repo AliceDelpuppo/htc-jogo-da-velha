@@ -222,11 +222,66 @@ body {
 }
 
 .container-center {
+	@include flex-center;
+	flex-direction: column;
+
 	width: 44%;
 	height: 100%;
 	background-color: $background-color-2;
 
+	.scoreboard {
+		margin-bottom: 70px;
 
+		@include flex-center;
+		flex-direction: column;
+
+		width: 400px;
+		height: 100px;
+		border-radius: 15px;
+		background-color: white;
+
+		>p {
+			font-size: 24px;
+			font-weight: 700;
+			color: $text-color-title;
+		}
+
+		.points {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.player-1-points, .player-2-points {
+				span {
+					font-size: 48px;
+					font-weight: 700;
+					color: $text-color-title;
+				}
+			}
+
+			.turn-player {
+				span {
+					font-size: 16px;
+					font-weight: 500;
+					color: $text-color-main;
+				}
+
+			}
+		}
+	}
+
+	.battlefield {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 20px;
+
+		.field {
+			width: 160px;
+			height: 160px;
+			border-radius: 15px;
+			background-color: #ffffff;
+		}
+	}
 }
 
 .container-right {
