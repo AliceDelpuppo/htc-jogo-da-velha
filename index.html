@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jogo da Velha</title>
 
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 	<section class="container-left">
 		<div class="players-box">
-			<div class="player-1-name player-input">
-				<input type="text">
+			<div class="player-1-name">
+				<input type="text" class="player-input">
 			</div>
 
-			<div class="player-2-name player-input">
-				<input type="text">
+			<div class="player-2-name">
+				<input type="text" class="player-input">
 
-				<div class="button-player-2 active-bot">
-					<div class="bg-button"></div>
-					<div class="circle-button"></div>
+				<div class="switch-player-2 active-bot">
+					<div class="circle-switch-player-2"></div>
 				</div>
 			</div>
 		</div>
@@ -31,14 +32,17 @@
 			<p>Tipo de Partida</p>
 
 			<div class="best-of">
-				<span>Melhor de 3</span>
-
-				<div class="button-type-game active-best-of">
-					<div class="bg-button-best-of"></div>
-					<div class="circle-button-best-of"></div>
+				<div>
+					<span>Melhor de 3</span>
 				</div>
 
-				<span>Melhor de 5</span>
+				<div class="bg-switch-best-of active-best-of">
+					<div class="circle-switch-best-of"></div>
+				</div>
+
+				<div>
+					<span>Melhor de 5</span>
+				</div>
 			</div>
 		</div>
 
@@ -59,14 +63,15 @@
 	</section>
 
 	<section class="container-center"></section>
-	
+
 	<section class="container-right"></section>
 
 
-    
+
 
 
 
 	<script src="js/script.js"></script>
 </body>
+
 </html>

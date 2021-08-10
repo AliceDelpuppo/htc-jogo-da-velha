@@ -18,6 +18,12 @@ button {
   border: none;
   text-decoration: none;
   background: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
 }
 
 body {
@@ -32,6 +38,144 @@ body {
   width: 28%;
   height: 100%;
   background-color: #0097E6;
+  padding: 50px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container-left .players-box {
+  margin-bottom: 40px;
+}
+.container-left .players-box input.player-input {
+  padding-left: 16px;
+  width: 317px;
+  height: 48px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #828282;
+  background-color: #fff;
+}
+.container-left .players-box input.player-input:focus {
+  border: 1px solid #2BA9EA;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #bcdae9;
+}
+.container-left .players-box .player-1-name {
+  margin-bottom: 20px;
+}
+.container-left .players-box .player-2-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.container-left .players-box .player-2-name .switch-player-2 {
+  padding: 4px;
+  width: 56px;
+  height: 32px;
+  border-radius: 100px;
+  background-color: #0097E6;
+  position: absolute;
+  right: 9px;
+  display: flex;
+  align-items: center;
+}
+.container-left .players-box .player-2-name .switch-player-2 .circle-switch-player-2 {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+.container-left .type-game {
+  margin-bottom: 45px;
+}
+.container-left .type-game p {
+  font-size: 16px;
+  font-weight: 700;
+  color: #45F391;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.container-left .type-game .best-of {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: red;
+}
+.container-left .type-game .best-of span {
+  font-size: 16px;
+  color: #FFF;
+}
+.container-left .type-game .best-of .bg-switch-best-of {
+  padding: 4px;
+  background-color: #0097E6;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  width: 56px;
+  height: 32px;
+}
+.container-left .type-game .best-of .bg-switch-best-of .circle-switch-best-of {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+.container-left .start-game .button-start-game {
+  margin-bottom: 38px;
+  width: 317px;
+  height: 54px;
+  background-color: #45F391;
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.container-left .start-game .button-start-game:hover {
+  letter-spacing: 1px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.container-left .match-history {
+  margin-bottom: 98px;
+}
+.container-left .match-history p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFF;
+}
+.container-left .restart button.restart-button {
+  width: 317px;
+  height: 54px;
+  background-color: #FFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #0097E6;
+  position: relative;
+  z-index: 1;
+}
+.container-left .restart button.restart-button:hover {
+  letter-spacing: 1px;
+}
+.container-left .restart button.restart-button::after {
+  content: "";
+  position: absolute;
+  box-shadow: inset 317px 0 0 0 #bcdae9;
+  transition: 0.5s;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  z-index: -1;
+}
+.container-left .restart button.restart-button:hover::after {
+  content: "";
+  border-radius: 10px;
+  left: 0;
+  right: 0;
 }
 
 .container-center {
