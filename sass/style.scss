@@ -14,7 +14,7 @@ body {
 	width: 28%;
 	height: 100%;
 	background-color: $background-color-1;
-	padding: 50px 35px;
+	padding: 50px 0;
 	@include flex-center;
 	flex-direction: column;
 
@@ -54,6 +54,7 @@ body {
 				position: absolute;
 				right: 9px;
 				cursor: pointer;
+                transition: 0.5s;
 
 				.circle-switch-player-2 {
 					width: 24px;
@@ -62,6 +63,7 @@ body {
 					background-color: $background-primary-color;
 					box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
 					cursor: pointer;
+                    transition: 0.5s;
 				}
 			}
 
@@ -89,10 +91,12 @@ body {
 		.switch-player-2.active-bot {
 			box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
 			background-color: #bbf3d3;
+            transition: 0.5s;
 
 			.circle-switch-player-2 {
 				background-color: $button-background;
 				transform: translateX(24px);
+                transition: 0.5s;
 			}
 		}
 
@@ -103,7 +107,7 @@ body {
 
 	.type-game {
 		margin-bottom: 45px;
-
+        width: 100%;
 
 		>p {
 			font-size: 16px;
@@ -117,7 +121,7 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			background-color: red;
+            margin: 0 35px;
 
 			p {
 				font-size: 16px;
@@ -231,6 +235,7 @@ body {
 
 	.scoreboard {
 		margin-bottom: 70px;
+        padding: 0 30px;
 
 		@include flex-center;
 		flex-direction: column;
@@ -247,9 +252,11 @@ body {
 		}
 
 		.points {
-			display: flex;
+            display: flex;
 			align-items: center;
 			justify-content: space-between;
+
+            width: 100%;
 
 			.player-1-points, .player-2-points {
 				span {
