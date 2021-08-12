@@ -118,10 +118,8 @@ body {
 		}
 
 		.best-of {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-            margin: 0 35px;
+            
+            @include flex-center;
 
 			p {
 				font-size: 16px;
@@ -130,6 +128,8 @@ body {
 
 			.bg-switch-best-of {
 				padding: 3px;
+                margin: 0 44PX;
+
 				background-color: $background-color-1;
 				border: 1px solid #fff;
 				border-radius: 100px;
@@ -172,13 +172,78 @@ body {
 	.match-history {
 		margin-bottom: 98px;
 
-		p {
+		>p {
 			margin-bottom: 20px;
+
+            text-align: center;
 
 			font-size: 16px;
 			font-weight: 700;
 			color: #FFF;
 		}
+
+        .w1 {
+            margin-bottom: 20px;
+        }
+
+        .w1, .w2 {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+           
+
+            .history-field-1, .history-field-2 {
+                padding: 6px 0 4px 16px;
+
+                width: 168px;
+                height: 50px;
+
+                background-color: #FFF;
+                border-radius: 10px;
+
+                p {
+                    
+
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: $text-color-main;
+
+                    &:first-child {
+                        color: $text-color-secondary;
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+
+            span {
+                margin: 0 26px;
+
+                font-size: 14px;
+                color: #FFF;
+            }
+
+            .scenario-winner1, .scenario-winner2 {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    gap: 2px;
+
+                .scenario-winner1-field, .scenario-winner2-field {
+                    width: 15px;
+                    height: 15px;
+                    background-color: #FFF;
+                    border-radius: 2px;
+                }
+            }
+
+        }
+
+       
+
+
+
+
+        
 	}
 
 	.restart {
@@ -292,7 +357,28 @@ body {
 }
 
 .container-right {
+    @include flex-center;
+    flex-direction: column;
 	width: 28%;
 	height: 100%;
 	background-color: $background-color-1;
+
+    p {
+        margin-bottom: 30px;
+
+        font-size: 16px;
+        font-weight: 700;
+        color: #FFF;
+    }
+
+    .history-game {
+        width: 317px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #FFF;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
