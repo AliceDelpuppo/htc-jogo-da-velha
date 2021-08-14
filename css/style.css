@@ -26,6 +26,17 @@ input {
   outline: none;
 }
 
+::-webkit-scrollbar {
+  background-color: #2BA9EA;
+  width: 10px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -171,7 +182,10 @@ body {
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .container-left .match-history {
-  margin-bottom: 98px;
+  margin-bottom: 40px;
+  padding-right: 10px;
+  max-height: 240px;
+  overflow-y: auto;
 }
 .container-left .match-history > p {
   margin-bottom: 20px;
@@ -180,41 +194,39 @@ body {
   font-weight: 700;
   color: #FFF;
 }
-.container-left .match-history .w1 {
+.container-left .match-history .winner-history {
   margin-bottom: 20px;
-}
-.container-left .match-history .w1, .container-left .match-history .w2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.container-left .match-history .w1 .history-field-1, .container-left .match-history .w1 .history-field-2, .container-left .match-history .w2 .history-field-1, .container-left .match-history .w2 .history-field-2 {
+.container-left .match-history .winner-history .history-field {
   padding: 6px 0 4px 16px;
   width: 168px;
   height: 50px;
   background-color: #FFF;
   border-radius: 10px;
 }
-.container-left .match-history .w1 .history-field-1 p, .container-left .match-history .w1 .history-field-2 p, .container-left .match-history .w2 .history-field-1 p, .container-left .match-history .w2 .history-field-2 p {
+.container-left .match-history .winner-history .history-field p {
   font-size: 14px;
   font-weight: 700;
   color: #828282;
 }
-.container-left .match-history .w1 .history-field-1 p:first-child, .container-left .match-history .w1 .history-field-2 p:first-child, .container-left .match-history .w2 .history-field-1 p:first-child, .container-left .match-history .w2 .history-field-2 p:first-child {
+.container-left .match-history .winner-history .history-field p:first-child {
   color: #45F391;
   margin-bottom: 6px;
 }
-.container-left .match-history .w1 span, .container-left .match-history .w2 span {
-  margin: 0 26px;
+.container-left .match-history .winner-history span {
+  margin: 0 16px;
   font-size: 14px;
   color: #FFF;
 }
-.container-left .match-history .w1 .scenario-winner1, .container-left .match-history .w1 .scenario-winner2, .container-left .match-history .w2 .scenario-winner1, .container-left .match-history .w2 .scenario-winner2 {
+.container-left .match-history .winner-history .scenario-winner {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2px;
 }
-.container-left .match-history .w1 .scenario-winner1 .scenario-winner1-field, .container-left .match-history .w1 .scenario-winner1 .scenario-winner2-field, .container-left .match-history .w1 .scenario-winner2 .scenario-winner1-field, .container-left .match-history .w1 .scenario-winner2 .scenario-winner2-field, .container-left .match-history .w2 .scenario-winner1 .scenario-winner1-field, .container-left .match-history .w2 .scenario-winner1 .scenario-winner2-field, .container-left .match-history .w2 .scenario-winner2 .scenario-winner1-field, .container-left .match-history .w2 .scenario-winner2 .scenario-winner2-field {
+.container-left .match-history .winner-history .scenario-winner .scenario-winner-field {
   width: 15px;
   height: 15px;
   background-color: #FFF;

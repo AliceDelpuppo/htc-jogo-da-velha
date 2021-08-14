@@ -7,5 +7,3 @@ $switchBot.addEventListener('click', function(){
     $switchPlayer2.classList.toggle('active-bot')
     $botName.classList.toggle('active-bot')
 })
-
-console.log($bot)

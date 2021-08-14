@@ -25,3 +25,13 @@ input {
 	outline: none;
 }
 
+::-webkit-scrollbar {
+    background-color: $background-color-2;
+    width: 10px;
+    border-radius: 6px;
+} 
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 6px;
+}

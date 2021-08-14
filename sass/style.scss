@@ -163,14 +163,16 @@ body {
 				letter-spacing: 1px;
 				box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 			}
-			
 		}
-
-		
 	}
 
 	.match-history {
-		margin-bottom: 98px;
+		margin-bottom: 40px;
+
+        padding-right: 10px;
+
+        max-height: 240px;
+        overflow-y: auto;
 
 		>p {
 			margin-bottom: 20px;
@@ -181,19 +183,16 @@ body {
 			font-weight: 700;
 			color: #FFF;
 		}
-
-        .w1 {
+        
+        .winner-history {
             margin-bottom: 20px;
-        }
-
-        .w1, .w2 {
 
             display: flex;
             align-items: center;
             justify-content: space-between;
            
 
-            .history-field-1, .history-field-2 {
+            .history-field {
                 padding: 6px 0 4px 16px;
 
                 width: 168px;
@@ -203,7 +202,6 @@ body {
                 border-radius: 10px;
 
                 p {
-                    
 
                     font-size: 14px;
                     font-weight: 700;
@@ -217,33 +215,25 @@ body {
             }
 
             span {
-                margin: 0 26px;
+                margin: 0 16px;
 
                 font-size: 14px;
                 color: #FFF;
             }
 
-            .scenario-winner1, .scenario-winner2 {
+            .scenario-winner {
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
                     gap: 2px;
 
-                .scenario-winner1-field, .scenario-winner2-field {
+                .scenario-winner-field {
                     width: 15px;
                     height: 15px;
                     background-color: #FFF;
                     border-radius: 2px;
                 }
             }
-
         }
-
-       
-
-
-
-
-        
 	}
 
 	.restart {
