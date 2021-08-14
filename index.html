@@ -2,62 +2,62 @@
 <html lang="pt-br">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Jogo da Velha</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
 
-	<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
 
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<section class="container-left">
-		<div class="players-box">
-			<div class="player-1-name">
-				<input type="text" class="player-input" placeholder="Jogador 1">
-			</div>
+    <section class="container-left">
+        <div class="players-box">
+            <div class="player-1-name">
+                <input type="text" class="player-input" placeholder="Jogador 1">
+            </div>
 
-			<div class="player-2-name">
-				<input type="text" class="player-input" placeholder="Jogador 1">
+            <div class="player-2-name">
+                <input type="text" class="player-input" placeholder="Jogador 1">
 
-				<div class="switch-player-2 switch-bot">
-					<div class="circle-switch-player-2 "></div>
-				</div>
+                <div class="switch-player-2 switch-bot">
+                    <div class="circle-switch-player-2 "></div>
+                </div>
 
-				<div class="bot-name switch-bot">
-					<span>Bot ativo</span>
-				</div>
-			</div>
-		</div>
+                <div class="bot-name switch-bot">
+                    <span>Bot ativo</span>
+                </div>
+            </div>
+        </div>
 
-		<div class="type-game">
-			<p>Tipo de Partida</p>
+        <div class="type-game">
+            <p>Tipo de Partida</p>
 
-			<div class="best-of">
-				<div>
-					<p>Melhor de 3</p>
-				</div>
+            <div class="best-of">
+                <div>
+                    <p>Melhor de 3</p>
+                </div>
 
-				<div class="bg-switch-best-of">
-					<div class="circle-switch-best-of active-best-of"></div>
-				</div>
-                
-				<div>
-					<p>Melhor de 5</p>
-				</div>
-			</div>
-		</div>
+                <div class="bg-switch-best-of">
+                    <div class="circle-switch-best-of active-best-of"></div>
+                </div>
 
-		<div class="start-game">
-			<button type="button" class="button-start-game">Jogar</button>
-		</div>
+                <div>
+                    <p>Melhor de 5</p>
+                </div>
+            </div>
+        </div>
 
-		<div class="match-history">
-			<p>Histórico de Partidas</p>
+        <div class="start-game">
+            <button type="button" class="button-start-game">Jogar</button>
+        </div>
 
-			<div class="winner-history">
+        <div class="match-history">
+            <p>Histórico de Partidas</p>
+
+            <div class="winner-history">
                 <div class="history-field">
                     <p>Vencedor</p>
                     <p>Primeiro Quadrado</p>
@@ -66,7 +66,12 @@
                 <span>Cenário</span>
 
                 <div class="scenario-winner">
-                    <div class="scenario-winner-field"></div>
+                    <div class="scenario-winner-field">
+                        <div class="piece-scenario">
+                            <span>X</span>
+                        </div>
+                    </div>
+
                     <div class="scenario-winner-field"></div>
                     <div class="scenario-winner-field"></div>
                     <div class="scenario-winner-field"></div>
@@ -184,62 +189,84 @@
             </div>
 
 
-		</div>
+        </div>
 
-		<div class="restart">
-			<button type="button" class="restart-button">Reiniciar</button>
-		</div>
-	</section>
+        <div class="restart">
+            <button type="button" class="restart-button">Reiniciar</button>
+        </div>
+    </section>
 
-	<section class="container-center">
-		<div class="scoreboard">
+    <section class="container-center">
+        <div class="scoreboard">
 
-			<p>Placar</p>
+            <p>Placar</p>
 
-			<div class="points">
-				<div class="player-1-points">
-					<span>01</span>
-				</div>
+            <div class="points">
+                <div class="player-1-points">
+                    <span>01</span>
+                </div>
 
-				<div class="turn-player">
-					<span>Jogador 1</span>
-				</div>
+                <div class="turn-player">
+                    <span>Jogador 1</span>
+                </div>
 
-				<div>
-					<div class="player-2-points">
-						<span>01</span>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="battlefield">
-			<div class="field field-0">
+                <div>
+                    <div class="player-2-points">
+                        <span>01</span>
+                    </div>
+                </div>
             </div>
-			<div class="field field-1"></div>
-			<div class="field field-2"></div>
-			<div class="field field-3"></div>
-			<div class="field field-4"></div>
-			<div class="field field-5"></div>
-			<div class="field field-6"></div>
-			<div class="field field-7"></div>
-			<div class="field field-8"></div>
-		</div>
+        </div>
 
-	</section>
+        <div class="battlefield">
+            <div class="field field-0">
+                <div class="piece-move">
+                    <span>X</span>
+                </div>
+            </div>
 
-	<section class="container-right">
+            <div class="field field-1"></div>
+            <div class="field field-2"></div>
+            <div class="field field-3"></div>
+            <div class="field field-4"></div>
+            <div class="field field-5"></div>
+            <div class="field field-6"></div>
+            <div class="field field-7"></div>
+            <div class="field field-8"></div>
+        </div>
+
+    </section>
+
+    <section class="container-right">
 
         <p>Histórico de Jogadas</p>
 
-        <div class="history-game"></div>
-        <div class="history-game"></div>
-        <div class="history-game"></div>
-        <div class="history-game"></div>
-        <div class="history-game"></div>
-        <div class="history-game"></div>
-        <div class="history-game"></div>
-        <div class="history-game"></div>
+        <div class="history-move">
+            <div class="last-move">
+                <div class="piece-last-move">
+                    <span>O</span>
+                </div>
+
+                <div>
+                    <div class="player-name-last-move">
+                        <span>Jogador 1</span>
+
+                    </div>
+
+                    <div class="position-last-mome">
+                        <span>Primeiro quadrado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-move"></div>
+        <div class="history-move"></div>
+        <div class="history-move"></div>
+        <div class="history-move"></div>
+        <div class="history-move"></div>
+        <div class="history-move"></div>
+        <div class="history-move"></div>
 
 
     </section>
@@ -249,7 +276,7 @@
 
 
 
-	<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

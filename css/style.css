@@ -232,6 +232,16 @@ body {
   background-color: #FFF;
   border-radius: 2px;
 }
+.container-left .match-history .winner-history .scenario-winner .scenario-winner-field .piece-scenario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-left .match-history .winner-history .scenario-winner .scenario-winner-field .piece-scenario span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #828282;
+}
 .container-left .restart button.restart-button {
   width: 317px;
   height: 54px;
@@ -318,6 +328,16 @@ body {
   border-radius: 15px;
   background-color: #ffffff;
 }
+.container-center .battlefield .field .piece-move {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-center .battlefield .field .piece-move span {
+  font-size: 130px;
+  font-weight: 700;
+  color: #828282;
+}
 
 .container-right {
   display: flex;
@@ -334,14 +354,43 @@ body {
   font-weight: 700;
   color: #FFF;
 }
-.container-right .history-game {
+.container-right .history-move {
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
   width: 317px;
   height: 50px;
   border-radius: 10px;
   background-color: #FFF;
 }
-.container-right .history-game:not(:last-child) {
+.container-right .history-move:not(:last-child) {
   margin-bottom: 20px;
+}
+.container-right .history-move .last-move {
+  display: flex;
+}
+.container-right .history-move .last-move .piece-last-move {
+  margin-right: 16px;
+}
+.container-right .history-move .last-move .piece-last-move span {
+  font-size: 48px;
+  font-weight: 700;
+  color: #828282;
+}
+.container-right .history-move .last-move div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.container-right .history-move .last-move div .player-name-last-move span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #828282;
+  margin-bottom: 7px;
+}
+.container-right .history-move .last-move div .position-last-mome {
+  font-size: 14px;
+  color: #0097E6;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -231,6 +231,16 @@ body {
                     height: 15px;
                     background-color: #FFF;
                     border-radius: 2px;
+
+                    .piece-scenario {
+                        @include flex-center;
+                        
+                        span {
+                            font-size: 12px;
+                            font-weight: 700;
+                            color: $text-color-main;
+                        }
+                    }
                 }
             }
         }
@@ -342,7 +352,18 @@ body {
 			height: 160px;
 			border-radius: 15px;
 			background-color: #ffffff;
+
+            .piece-move {
+                @include flex-center;
+
+                span {
+                    font-size: 130px;
+                    font-weight: 700;
+                    color: $text-color-main;
+                }
+            }
 		}
+
 	}
 }
 
@@ -361,7 +382,12 @@ body {
         color: #FFF;
     }
 
-    .history-game {
+    .history-move {
+        padding: 6px 10px;
+
+        display: flex;
+        align-items: center;
+
         width: 317px;
         height: 50px;
         border-radius: 10px;
@@ -369,6 +395,38 @@ body {
 
         &:not(:last-child) {
             margin-bottom: 20px;
+        }
+
+        .last-move {
+            display: flex;
+            .piece-last-move {
+                margin-right: 16px;
+                span {
+                    font-size: 48px;
+                    font-weight: 700;
+                    color: $text-color-main;
+                }
+            }
+
+            div {
+                display: flex;
+                justify-content: center;               
+                flex-direction: column;
+
+                .player-name-last-move {
+                    span {
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: $text-color-main;
+                        margin-bottom: 7px;
+                    }
+                }
+    
+                .position-last-mome {
+                    font-size: 14px;
+                    color: $text-color-title;
+                }
+            }
         }
     }
 }
