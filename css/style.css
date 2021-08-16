@@ -149,11 +149,11 @@ body {
 }
 .container-left .type-game .best-of p {
   font-size: 16px;
-  color: #FFF;
+  color: #fff;
 }
 .container-left .type-game .best-of .bg-switch-best-of {
   padding: 3px;
-  margin: 0 44PX;
+  margin: 0 44px;
   background-color: #0097E6;
   border: 1px solid #fff;
   border-radius: 100px;
@@ -173,7 +173,7 @@ body {
   background-color: #45F391;
   font-size: 24px;
   font-weight: 500;
-  color: #FFF;
+  color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
@@ -192,7 +192,7 @@ body {
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-  color: #FFF;
+  color: #fff;
 }
 .container-left .match-history .winner-history {
   margin-bottom: 20px;
@@ -204,7 +204,7 @@ body {
   padding: 6px 0 4px 16px;
   width: 168px;
   height: 50px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 10px;
 }
 .container-left .match-history .winner-history .history-field p {
@@ -219,7 +219,7 @@ body {
 .container-left .match-history .winner-history span {
   margin: 0 16px;
   font-size: 14px;
-  color: #FFF;
+  color: #fff;
 }
 .container-left .match-history .winner-history .scenario-winner {
   display: grid;
@@ -229,7 +229,7 @@ body {
 .container-left .match-history .winner-history .scenario-winner .scenario-winner-field {
   width: 15px;
   height: 15px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 2px;
 }
 .container-left .match-history .winner-history .scenario-winner .scenario-winner-field .piece-scenario {
@@ -245,7 +245,7 @@ body {
 .container-left .restart button.restart-button {
   width: 317px;
   height: 54px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-size: 24px;
@@ -307,7 +307,8 @@ body {
   justify-content: space-between;
   width: 100%;
 }
-.container-center .scoreboard .points .player-1-points span, .container-center .scoreboard .points .player-2-points span {
+.container-center .scoreboard .points .player-1-points span,
+.container-center .scoreboard .points .player-2-points span {
   font-size: 48px;
   font-weight: 700;
   color: #0097E6;
@@ -318,22 +319,21 @@ body {
   color: #828282;
 }
 .container-center .battlefield {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
-.container-center .battlefield .field {
+.container-center .battlefield .row {
+  display: flex;
+}
+.container-center .battlefield .row .field {
   width: 160px;
   height: 160px;
   border-radius: 15px;
   background-color: #ffffff;
-}
-.container-center .battlefield .field .piece-move {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.container-center .battlefield .field .piece-move span {
   font-size: 130px;
   font-weight: 700;
   color: #828282;
@@ -352,7 +352,7 @@ body {
   margin-bottom: 30px;
   font-size: 16px;
   font-weight: 700;
-  color: #FFF;
+  color: #fff;
 }
 .container-right .history-move {
   padding: 6px 10px;
@@ -361,7 +361,7 @@ body {
   width: 317px;
   height: 50px;
   border-radius: 10px;
-  background-color: #FFF;
+  background-color: #fff;
 }
 .container-right .history-move:not(:last-child) {
   margin-bottom: 20px;

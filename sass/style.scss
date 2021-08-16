@@ -1,196 +1,194 @@
-@import '_variables.scss';
-@import '_mixins.scss';
-@import '_reset.scss';
+@import "_variables.scss";
+@import "_mixins.scss";
+@import "_reset.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 
 body {
-	height: 100vh;
-	width: 100vw;
-	@include flex-center;
+    height: 100vh;
+    width: 100vw;
+    @include flex-center;
 }
 
 .container-left {
-	width: 28%;
-	height: 100%;
-	background-color: $background-color-1;
-	padding: 50px 0;
-	@include flex-center;
-	flex-direction: column;
+    width: 28%;
+    height: 100%;
+    background-color: $background-color-1;
+    padding: 50px 0;
+    @include flex-center;
+    flex-direction: column;
 
-	.players-box {
-		margin-bottom: 40px;
+    .players-box {
+        margin-bottom: 40px;
 
-		input.player-input {
-			padding-left: 16px;
-			width: 317px;
-			height: 48px;
-			border-radius: 10px;
-			font-size: 16px;
-			color: $text-color-main;
-			background-color: #fff;
+        input.player-input {
+            padding-left: 16px;
+            width: 317px;
+            height: 48px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: $text-color-main;
+            background-color: #fff;
 
-			&:focus {
-				border: 1px solid $background-color-2;
-				box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-				background-color: #bcdae9;
-			}
-		}
+            &:focus {
+                border: 1px solid $background-color-2;
+                box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                background-color: #bcdae9;
+            }
+        }
 
-		.player-1-name {
-			margin-bottom: 20px;
-		}
+        .player-1-name {
+            margin-bottom: 20px;
+        }
 
-		.player-2-name {
-			@include flex-center;
-			position: relative;
+        .player-2-name {
+            @include flex-center;
+            position: relative;
 
-			.switch-player-2 {
-				padding: 4px;
-				width: 56px;
-				height: 32px;
-				border-radius: 100px;
-				background-color: $background-color-1;
-				position: absolute;
-				right: 9px;
-				cursor: pointer;
+            .switch-player-2 {
+                padding: 4px;
+                width: 56px;
+                height: 32px;
+                border-radius: 100px;
+                background-color: $background-color-1;
+                position: absolute;
+                right: 9px;
+                cursor: pointer;
                 transition: 0.5s;
 
-				.circle-switch-player-2 {
-					width: 24px;
-					height: 24px;
-					border-radius: 50%;
-					background-color: $background-primary-color;
-					box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-					cursor: pointer;
+                .circle-switch-player-2 {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background-color: $background-primary-color;
+                    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+                    cursor: pointer;
                     transition: 0.5s;
-				}
-			}
+                }
+            }
 
-			.bot-name {
-				display: none;
+            .bot-name {
+                display: none;
 
-				background-color: white;
-				width: 252px;
-				height: 48px;
-				position: absolute;
-				left: 0;
-				border-radius: 10px;
-				
-				span {
-					padding: 12px;
-					display: flex;
-					justify-content: center;
-					font-size: 20px;
-					font-weight: 500;
-					color: $text-color-main;	
-				}
-			}
-		}
+                background-color: white;
+                width: 252px;
+                height: 48px;
+                position: absolute;
+                left: 0;
+                border-radius: 10px;
 
-		.switch-player-2.active-bot {
-			box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
-			background-color: #bbf3d3;
+                span {
+                    padding: 12px;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: $text-color-main;
+                }
+            }
+        }
+
+        .switch-player-2.active-bot {
+            box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+            background-color: #bbf3d3;
             transition: 0.5s;
 
-			.circle-switch-player-2 {
-				background-color: $button-background;
-				transform: translateX(24px);
+            .circle-switch-player-2 {
+                background-color: $button-background;
+                transform: translateX(24px);
                 transition: 0.5s;
-			}
-		}
+            }
+        }
 
-		.bot-name.active-bot {
-			display: block;
-		}
-	}
+        .bot-name.active-bot {
+            display: block;
+        }
+    }
 
-	.type-game {
-		margin-bottom: 45px;
+    .type-game {
+        margin-bottom: 45px;
         width: 100%;
 
-		>p {
-			font-size: 16px;
-			font-weight: 700;
-			color: $text-color-secondary;
-			margin-bottom: 15px;
-			text-align: center;
-		}
+        > p {
+            font-size: 16px;
+            font-weight: 700;
+            color: $text-color-secondary;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-		.best-of {
-            
+        .best-of {
             @include flex-center;
 
-			p {
-				font-size: 16px;
-				color: #FFF;
-			}
+            p {
+                font-size: 16px;
+                color: #fff;
+            }
 
-			.bg-switch-best-of {
-				padding: 3px;
-                margin: 0 44PX;
+            .bg-switch-best-of {
+                padding: 3px;
+                margin: 0 44px;
 
-				background-color: $background-color-1;
-				border: 1px solid #fff;
-				border-radius: 100px;
-				width: 56px;
-				height: 32px;
+                background-color: $background-color-1;
+                border: 1px solid #fff;
+                border-radius: 100px;
+                width: 56px;
+                height: 32px;
 
-				.circle-switch-best-of {
-					width: 24px;
-					height: 24px;
-					border-radius: 50%;
-					background-color: $background-primary-color;
-				}
-			}
-		}
-	}
+                .circle-switch-best-of {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background-color: $background-primary-color;
+                }
+            }
+        }
+    }
 
-	.start-game {
-		.button-start-game {
-			margin-bottom: 38px;
+    .start-game {
+        .button-start-game {
+            margin-bottom: 38px;
 
-			width: 317px;
-			height: 54px;
-			background-color: $button-background;
-			font-size: 24px;
-			font-weight: 500;
-			color: #FFF;
-			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-			border-radius: 10px;
+            width: 317px;
+            height: 54px;
+            background-color: $button-background;
+            font-size: 24px;
+            font-weight: 500;
+            color: #fff;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
 
-			&:hover {
-				letter-spacing: 1px;
-				box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-			}
-		}
-	}
+            &:hover {
+                letter-spacing: 1px;
+                box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
 
-	.match-history {
-		margin-bottom: 40px;
+    .match-history {
+        margin-bottom: 40px;
 
         padding-right: 10px;
 
         max-height: 240px;
         overflow-y: auto;
 
-		>p {
-			margin-bottom: 20px;
+        > p {
+            margin-bottom: 20px;
 
             text-align: center;
 
-			font-size: 16px;
-			font-weight: 700;
-			color: #FFF;
-		}
-        
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+        }
+
         .winner-history {
             margin-bottom: 20px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-           
 
             .history-field {
                 padding: 6px 0 4px 16px;
@@ -198,11 +196,10 @@ body {
                 width: 168px;
                 height: 50px;
 
-                background-color: #FFF;
+                background-color: #fff;
                 border-radius: 10px;
 
                 p {
-
                     font-size: 14px;
                     font-weight: 700;
                     color: $text-color-main;
@@ -218,23 +215,23 @@ body {
                 margin: 0 16px;
 
                 font-size: 14px;
-                color: #FFF;
+                color: #fff;
             }
 
             .scenario-winner {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr;
-                    gap: 2px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 2px;
 
                 .scenario-winner-field {
                     width: 15px;
                     height: 15px;
-                    background-color: #FFF;
+                    background-color: #fff;
                     border-radius: 2px;
 
                     .piece-scenario {
                         @include flex-center;
-                        
+
                         span {
                             font-size: 12px;
                             font-weight: 700;
@@ -244,142 +241,140 @@ body {
                 }
             }
         }
-	}
+    }
 
-	.restart {
-		button.restart-button {
-			width: 317px;
-			height: 54px;
-			background-color: #FFF;
-			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-			border-radius: 10px;
+    .restart {
+        button.restart-button {
+            width: 317px;
+            height: 54px;
+            background-color: #fff;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
 
-			font-size: 24px;
-			font-weight: 500;
-			color: $text-color-title;
+            font-size: 24px;
+            font-weight: 500;
+            color: $text-color-title;
 
-			position: relative;
-			z-index: 1;
+            position: relative;
+            z-index: 1;
 
-			&:hover {
-				letter-spacing: 1px;
-			}
+            &:hover {
+                letter-spacing: 1px;
+            }
 
-			&::after {
-				content: '';
-				position: absolute;
-				box-shadow: inset 317px 0 0 0 #bcdae9;
-				transition: 0.5s;
-				top: 0;
-				bottom: 0;
-				left: 50%;
-				right: 50%;
-				z-index: -1;
-			}
+            &::after {
+                content: "";
+                position: absolute;
+                box-shadow: inset 317px 0 0 0 #bcdae9;
+                transition: 0.5s;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                right: 50%;
+                z-index: -1;
+            }
 
-			&:hover {
-				&::after {
-					content: '';
-					border-radius: 10px;
-					left: 0;
+            &:hover {
+                &::after {
+                    content: "";
+                    border-radius: 10px;
+                    left: 0;
                     right: 0;
-				}
-			}
-		}
-	}
-	
+                }
+            }
+        }
+    }
 }
 
 .container-center {
-	@include flex-center;
-	flex-direction: column;
+    @include flex-center;
+    flex-direction: column;
 
-	width: 44%;
-	height: 100%;
-	background-color: $background-color-2;
+    width: 44%;
+    height: 100%;
+    background-color: $background-color-2;
 
-	.scoreboard {
-		margin-bottom: 70px;
+    .scoreboard {
+        margin-bottom: 70px;
         padding: 0 30px;
 
-		@include flex-center;
-		flex-direction: column;
+        @include flex-center;
+        flex-direction: column;
 
-		width: 400px;
-		height: 100px;
-		border-radius: 15px;
-		background-color: white;
+        width: 400px;
+        height: 100px;
+        border-radius: 15px;
+        background-color: white;
 
-		>p {
-			font-size: 24px;
-			font-weight: 700;
-			color: $text-color-title;
-		}
+        > p {
+            font-size: 24px;
+            font-weight: 700;
+            color: $text-color-title;
+        }
 
-		.points {
+        .points {
             display: flex;
-			align-items: center;
-			justify-content: space-between;
+            align-items: center;
+            justify-content: space-between;
 
             width: 100%;
 
-			.player-1-points, .player-2-points {
-				span {
-					font-size: 48px;
-					font-weight: 700;
-					color: $text-color-title;
-				}
-			}
-
-			.turn-player {
-				span {
-					font-size: 16px;
-					font-weight: 500;
-					color: $text-color-main;
-				}
-
-			}
-		}
-	}
-
-	.battlefield {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: 20px;
-
-		.field {
-			width: 160px;
-			height: 160px;
-			border-radius: 15px;
-			background-color: #ffffff;
-
-            .piece-move {
-                @include flex-center;
-
+            .player-1-points,
+            .player-2-points {
                 span {
-                    font-size: 130px;
+                    font-size: 48px;
                     font-weight: 700;
+                    color: $text-color-title;
+                }
+            }
+
+            .turn-player {
+                span {
+                    font-size: 16px;
+                    font-weight: 500;
                     color: $text-color-main;
                 }
             }
-		}
+        }
+    }
 
-	}
+    .battlefield {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+            display: flex;
+
+            .field {
+                width: 160px;
+                height: 160px;
+                border-radius: 15px;
+                background-color: #ffffff;
+                cursor: pointer;
+    
+                @include flex-center;
+    
+                font-size: 130px;
+                font-weight: 700;
+                color: $text-color-main;
+            }
+        }
+    }
 }
 
 .container-right {
     @include flex-center;
     flex-direction: column;
-	width: 28%;
-	height: 100%;
-	background-color: $background-color-1;
+    width: 28%;
+    height: 100%;
+    background-color: $background-color-1;
 
     p {
         margin-bottom: 30px;
 
         font-size: 16px;
         font-weight: 700;
-        color: #FFF;
+        color: #fff;
     }
 
     .history-move {
@@ -391,7 +386,7 @@ body {
         width: 317px;
         height: 50px;
         border-radius: 10px;
-        background-color: #FFF;
+        background-color: #fff;
 
         &:not(:last-child) {
             margin-bottom: 20px;
@@ -410,7 +405,7 @@ body {
 
             div {
                 display: flex;
-                justify-content: center;               
+                justify-content: center;
                 flex-direction: column;
 
                 .player-name-last-move {
@@ -421,7 +416,7 @@ body {
                         margin-bottom: 7px;
                     }
                 }
-    
+
                 .position-last-mome {
                     font-size: 14px;
                     color: $text-color-title;
