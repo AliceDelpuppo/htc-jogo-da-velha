@@ -151,8 +151,8 @@ function verifyWinner() {
 	if (diagonalWinner) return diagonalWinner
 
 	if (verifyDrawGame()) {
-		return DRAW_GAME
-	}
+        return DRAW_GAME
+    }
 
 	return false
 }
@@ -203,8 +203,6 @@ function verifyDrawGame() {
 
 	return true
 }
-
-
 
 // $switchBot.addEventListener('click', function(){
 //     $switchPlayer2.classList.toggle('active-bot')
