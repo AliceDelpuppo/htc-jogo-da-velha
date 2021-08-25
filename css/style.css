@@ -222,23 +222,23 @@ body {
   color: #fff;
 }
 .container-left .match-history .winner-history .scenario-winner {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2px;
+  display: flex;
+  flex-direction: column;
 }
-.container-left .match-history .winner-history .scenario-winner .scenario-winner-field {
+.container-left .match-history .winner-history .scenario-winner .row-scenario-winner {
+  display: flex;
+}
+.container-left .match-history .winner-history .scenario-winner .row-scenario-winner .scenario-winner-field {
+  margin-bottom: 2px;
+  margin-right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 15px;
   height: 15px;
   background-color: #fff;
   border-radius: 2px;
-}
-.container-left .match-history .winner-history .scenario-winner .scenario-winner-field .piece-scenario {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container-left .match-history .winner-history .scenario-winner .scenario-winner-field .piece-scenario span {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: #828282;
 }
@@ -324,19 +324,28 @@ body {
 }
 .container-center .battlefield .row {
   display: flex;
+  margin-bottom: 10px;
 }
 .container-center .battlefield .row .field {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 160px;
   height: 160px;
   border-radius: 15px;
   background-color: #ffffff;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 130px;
   font-weight: 700;
   color: #828282;
+}
+.container-center .battlefield .row .color-winner {
+  color: blue;
+}
+.container-center .battlefield .row .color-full-field {
+  color: red;
+  background-color: #f8b7b7;
 }
 
 .container-right {
@@ -358,6 +367,7 @@ body {
   padding: 6px 10px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   width: 317px;
   height: 50px;
   border-radius: 10px;
