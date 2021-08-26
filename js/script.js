@@ -6,7 +6,8 @@ const $battlefield = document.querySelector('.battlefield')
 const $fields = $battlefield.querySelectorAll('.row .field')
 
 const $rows = document.querySelectorAll('.battlefield .row')
-const $historyMoveArray = document.querySelectorAll('.history-move')
+// const $historyMoveArray = document.querySelectorAll('.history-move')
+const $containerHistoryMove = document.querySelector('.container-history-move')
 
 const $namePlayer1 = document.querySelector('.player-1-name input')
 const $namePlayer2 = document.querySelector('.player-2-name input')
@@ -17,6 +18,7 @@ const $pointsPlayer2 = document.querySelector('.player-2-points span')
 
 const DRAW_GAME = 'D'
 const TIME_OFF_RESET_FIELDS = 1500
+const TIME_OFF_RESET_HISTORY_MOVE = 1500
 const TIME_STOP_GAME = 1500
 const TIME_FULL_FIELD = 1000
 
@@ -84,7 +86,7 @@ function play(i, j) {
         }
 
         moveHistory.push(move)
-        printMoveHistory()
+        printMoveHistory(move.player, move.position)
         printTable(gameTable)
 
         if (winner) {
@@ -96,6 +98,8 @@ function play(i, j) {
                 printPoints()
                 clearBattlerfield()
                 clearFieldWinnerName()
+                clearFieldHistoryMove()
+
                 nextPlayerStart()
                 resetVariables()
                 stopGameForAMoment()
@@ -114,6 +118,7 @@ function play(i, j) {
                 printWinnerName(winner)
                 clearBattlerfield()
                 clearFieldWinnerName()
+                clearFieldHistoryMove()
 
                 nextPlayerStart()
 
@@ -164,6 +169,17 @@ function resetVariables() {
     gameTable = createTable()
 }
 
+function clearFieldHistoryMove() {
+
+    const $historiesMoveRemove = document.querySelectorAll('.history-move')
+
+    setTimeout(() => {
+        $historiesMoveRemove.forEach(function ($historyMoveRemove) {
+            $containerHistoryMove.removeChild($historyMoveRemove)
+        });
+    }, TIME_OFF_RESET_HISTORY_MOVE);
+}
+
 function clearBattlerfield() {
     setTimeout(() => {
 
@@ -211,31 +227,75 @@ function printTable(table) {
     })
 }
 
-function printMoveHistory() {
+function printMoveHistory(currentPlayer, position) {
 
-    const containerHistoryMove = document.querySelector('.container-history-move')
+    const divHistoryMoveCreate = document.createElement('div')
+    divHistoryMoveCreate.classList.add('history-move')
+    $containerHistoryMove.appendChild(divHistoryMoveCreate)
 
-    $historyMoveArray.forEach(function ($historyMove, i) {
+    const divPieceLastMoveCreate = document.createElement('div')
+    divPieceLastMoveCreate.classList.add('piece-last-move')
+    divHistoryMoveCreate.appendChild(divPieceLastMoveCreate)
 
-    const $lable = $historyMove.querySelector('.piece-last-move span')
-    const $player = $historyMove.querySelector('.player-name-last-move span')
-    const $position = $historyMove.querySelector('.position-last-mome span')
+    const spanPieceLastMoveCreate = document.createElement('span')
+    divPieceLastMoveCreate.appendChild(spanPieceLastMoveCreate)
 
-    const move = moveHistory[i]
+    const divCreate = document.createElement('div')
+    divHistoryMoveCreate.appendChild(divCreate)
 
-    if (move) {
-        const playerName = getPlayerName(move.player)
-        $player.textContent = playerName
+    const divPlayerNameLastMoveCreate = document.createElement('div')
+    divPlayerNameLastMoveCreate.classList.add('player-name-last-move')
+    divCreate.appendChild(divPlayerNameLastMoveCreate)
 
-        if (move.player == P1_CODE) {
-            $lable.textContent = 'X'
-        } else {
-            $lable.textContent = 'O'
-        }
+    const spanPlayerNameLastMoveCreate = document.createElement('span')
+    divPlayerNameLastMoveCreate.appendChild(spanPlayerNameLastMoveCreate)
 
-        $position.textContent = getPositionText(move.position)
+    const divPositionLastMoveCreate = document.createElement('div')
+    divPositionLastMoveCreate.classList.add('position-last-mome')
+    divCreate.appendChild(divPositionLastMoveCreate)
+
+    const spanPositionLastMoveCreate = document.createElement('span')
+    divPositionLastMoveCreate.appendChild(spanPositionLastMoveCreate)
+
+    const textPlayerNameLastMove = document.createTextNode(getPlayerName(currentPlayer))
+    const textPositionLastMove = document.createTextNode(getPositionText(position))
+    let textPieceLastMove = document.createTextNode('X')
+
+    if (currentPlayer == P1_CODE) {
+        textPieceLastMove = document.createTextNode('X')
+    } else {
+        textPieceLastMove = document.createTextNode('O')
     }
-})
+
+    spanPlayerNameLastMoveCreate.appendChild(textPlayerNameLastMove)
+    spanPieceLastMoveCreate.appendChild(textPieceLastMove)
+    spanPositionLastMoveCreate.appendChild(textPositionLastMove)
+
+    
+
+
+
+    //     $historyMoveArray.forEach(function ($historyMove, i) {
+
+    //     const $lable = $historyMove.querySelector('.piece-last-move span')
+    //     const $player = $historyMove.querySelector('.player-name-last-move span')
+    //     const $position = $historyMove.querySelector('.position-last-mome span')
+
+    //     const move = moveHistory[i]
+
+    //     if (move) {
+    //         const playerName = getPlayerName(move.player)
+    //         $player.textContent = playerName
+
+    //         if (move.player == P1_CODE) {
+    //             $lable.textContent = 'X'
+    //         } else {
+    //             $lable.textContent = 'O'
+    //         }
+
+    //         $position.textContent = getPositionText(move.position)
+    //     }
+    // })
 }
 
 function getPlayerName(currentPlayer) {
