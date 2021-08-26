@@ -6,9 +6,9 @@ const $battlefield = document.querySelector('.battlefield')
 const $fields = $battlefield.querySelectorAll('.row .field')
 
 const $rows = document.querySelectorAll('.battlefield .row')
-// const $historyMoveArray = document.querySelectorAll('.history-move')
 const $containerHistoryMove = document.querySelector('.container-history-move')
 
+const $alertsGame = document.querySelector('.scoreboard p')
 const $namePlayer1 = document.querySelector('.player-1-name input')
 const $namePlayer2 = document.querySelector('.player-2-name input')
 const $winnerName = document.querySelector('.scoreboard .nameWinner span')
@@ -16,9 +16,13 @@ const $winnerName = document.querySelector('.scoreboard .nameWinner span')
 const $pointsPlayer1 = document.querySelector('.player-1-points span')
 const $pointsPlayer2 = document.querySelector('.player-2-points span')
 
+const $buttonStartGame = document.querySelector('.button-start-game')
+const $buttonRestartGame = document.querySelector('.restart-button')
+
 const DRAW_GAME = 'D'
 const TIME_OFF_RESET_FIELDS = 1500
 const TIME_OFF_RESET_HISTORY_MOVE = 1500
+const TIME_OFF_RESET_ALERTS = 1600
 const TIME_STOP_GAME = 1500
 const TIME_FULL_FIELD = 1000
 
@@ -36,7 +40,7 @@ let moveHistory = []
 let currentPlayer = P1_CODE
 let lastStartPlayer = P1_CODE
 
-let permissionPlay = true
+let permissionPlay = false
 
 for (let i = 0; i < $rows.length; i++) {
     const $row = $rows[i]
@@ -49,9 +53,30 @@ for (let i = 0; i < $rows.length; i++) {
 
             if (permissionPlay) {
                 play(i, j)
+            } else {
+                alertNoPermissionPlay('Para iniciar, clique em Jogar')
             }
         })
     }
+}
+
+$buttonStartGame.addEventListener('click', function (event) {
+    // event.preventDefault()
+
+    permissionPlay = true
+})
+
+// $buttonRestartGame.addEventListener('click', function(){
+
+// })
+
+
+function alertNoPermissionPlay(text) {
+    $alertsGame.textContent = text
+
+    setTimeout(() => {
+        $alertsGame.textContent = 'Placar'
+    }, TIME_OFF_RESET_ALERTS);
 }
 
 function stopGameForAMoment() {
@@ -138,6 +163,7 @@ function play(i, j) {
     } else {
         // aviso de que o campo está cheio
         warningFullField(i, j)
+        alertNoPermissionPlay('O campo está cheio')
     }
 }
 
@@ -259,7 +285,7 @@ function printMoveHistory(currentPlayer, position) {
 
     const textPlayerNameLastMove = document.createTextNode(getPlayerName(currentPlayer))
     const textPositionLastMove = document.createTextNode(getPositionText(position))
-    let textPieceLastMove = document.createTextNode('X')
+    let textPieceLastMove = document.createTextNode('')
 
     if (currentPlayer == P1_CODE) {
         textPieceLastMove = document.createTextNode('X')
@@ -271,31 +297,6 @@ function printMoveHistory(currentPlayer, position) {
     spanPieceLastMoveCreate.appendChild(textPieceLastMove)
     spanPositionLastMoveCreate.appendChild(textPositionLastMove)
 
-    
-
-
-
-    //     $historyMoveArray.forEach(function ($historyMove, i) {
-
-    //     const $lable = $historyMove.querySelector('.piece-last-move span')
-    //     const $player = $historyMove.querySelector('.player-name-last-move span')
-    //     const $position = $historyMove.querySelector('.position-last-mome span')
-
-    //     const move = moveHistory[i]
-
-    //     if (move) {
-    //         const playerName = getPlayerName(move.player)
-    //         $player.textContent = playerName
-
-    //         if (move.player == P1_CODE) {
-    //             $lable.textContent = 'X'
-    //         } else {
-    //             $lable.textContent = 'O'
-    //         }
-
-    //         $position.textContent = getPositionText(move.position)
-    //     }
-    // })
 }
 
 function getPlayerName(currentPlayer) {
