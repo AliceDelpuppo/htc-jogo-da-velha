@@ -409,9 +409,8 @@ body {
         &:not(:last-child) {
             margin-bottom: 20px;
         }
-
-        .last-move {
-            display: flex;
+        display: flex;
+        
             .piece-last-move {
                 margin-right: 16px;
                 span {
@@ -440,6 +439,5 @@ body {
                     color: $text-color-title;
                 }
             }
-        }
     }
 }

@@ -372,33 +372,31 @@ body {
   height: 50px;
   border-radius: 10px;
   background-color: #fff;
+  display: flex;
 }
 .container-right .history-move:not(:last-child) {
   margin-bottom: 20px;
 }
-.container-right .history-move .last-move {
-  display: flex;
-}
-.container-right .history-move .last-move .piece-last-move {
+.container-right .history-move .piece-last-move {
   margin-right: 16px;
 }
-.container-right .history-move .last-move .piece-last-move span {
+.container-right .history-move .piece-last-move span {
   font-size: 48px;
   font-weight: 700;
   color: #828282;
 }
-.container-right .history-move .last-move div {
+.container-right .history-move div {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.container-right .history-move .last-move div .player-name-last-move span {
+.container-right .history-move div .player-name-last-move span {
   font-size: 14px;
   font-weight: 700;
   color: #828282;
   margin-bottom: 7px;
 }
-.container-right .history-move .last-move div .position-last-mome {
+.container-right .history-move div .position-last-mome {
   font-size: 14px;
   color: #0097E6;
 }
