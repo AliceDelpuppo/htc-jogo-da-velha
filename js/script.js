@@ -2,7 +2,8 @@ const $switchBot = document.querySelector('.switch-bot')
 const $switchPlayer2 = document.querySelector('.switch-player-2')
 const $botName = document.querySelector('.bot-name')
 
-const $battlefield = document.querySelectorAll('.battlefield')
+const $battlefield = document.querySelector('.battlefield')
+const $fields = $battlefield.querySelectorAll('.row .field')
 
 const $rows = document.querySelectorAll('.battlefield .row')
 const $historyMoveArray = document.querySelectorAll('.history-move')
@@ -86,8 +87,6 @@ function play(i, j) {
         printMoveHistory()
         printTable(gameTable)
 
-        console.log(`valor de winner ${winner}`)
-
         if (winner) {
             // Alguém ganhou ou empatou
             if (winner == DRAW_GAME) {
@@ -140,8 +139,6 @@ function play(i, j) {
 function warningFullField(i, j) {
     const $fields = $rows[i].querySelectorAll('.row .field')
 
-    // console.log($fields[j])
-
     $fields[j].classList.add('color-full-field')
 
     setTimeout(() => {
@@ -165,23 +162,14 @@ function resetVariables() {
     EMPTY_CODE = 0
     moveHistory = []
     gameTable = createTable()
-
-
-    // console.log('P1_CODE: ', P1_CODE);
-    // console.log('P2_CODE: ', P2_CODE);
-    // console.log('EMPTY_CODE: ', EMPTY_CODE);
-    // console.log('gameTable: ', gameTable);    
 }
 
 function clearBattlerfield() {
     setTimeout(() => {
-        $rows.forEach(function ($row) {
-            const $fields = $row.querySelectorAll('.row .field')
 
-            $fields.forEach(function ($field, j) {
-                $field.textContent = ''
-            });
-        });
+        for (const $field of $fields) {
+            $field.textContent = ''
+        }
     }, TIME_OFF_RESET_FIELDS);
 }
 
@@ -206,6 +194,7 @@ function printPoints() {
 }
 
 function printTable(table) {
+
     $rows.forEach(function ($row, i) {
         const $fields = $row.querySelectorAll('.field')
 
@@ -223,26 +212,30 @@ function printTable(table) {
 }
 
 function printMoveHistory() {
+
+    const containerHistoryMove = document.querySelector('.container-history-move')
+
     $historyMoveArray.forEach(function ($historyMove, i) {
-        const $lable = $historyMove.querySelector('.piece-last-move span')
-        const $player = $historyMove.querySelector('.player-name-last-move span')
-        const $position = $historyMove.querySelector('.position-last-mome span')
 
-        const move = moveHistory[i]
+    const $lable = $historyMove.querySelector('.piece-last-move span')
+    const $player = $historyMove.querySelector('.player-name-last-move span')
+    const $position = $historyMove.querySelector('.position-last-mome span')
 
-        if (move) {
-            const playerName = getPlayerName(move.player)
-            $player.textContent = playerName
+    const move = moveHistory[i]
 
-            if (move.player == P1_CODE) {
-                $lable.textContent = 'X'
-            } else {
-                $lable.textContent = 'O'
-            }
+    if (move) {
+        const playerName = getPlayerName(move.player)
+        $player.textContent = playerName
 
-            $position.textContent = getPositionText(move.position)
+        if (move.player == P1_CODE) {
+            $lable.textContent = 'X'
+        } else {
+            $lable.textContent = 'O'
         }
-    })
+
+        $position.textContent = getPositionText(move.position)
+    }
+})
 }
 
 function getPlayerName(currentPlayer) {
@@ -277,7 +270,6 @@ function copyTable(table) {
             tableCopy[i][j] = table[i][j]
         }
     }
-
     return tableCopy
 }
 
@@ -294,7 +286,6 @@ function verifyWinner() {
     if (verifyDrawGame()) {
         return DRAW_GAME
     }
-
     return false
 }
 
@@ -307,7 +298,6 @@ function verifyRowWinner() {
             return gameTable[i][0]
         }
     }
-
     return false
 }
 
@@ -327,7 +317,13 @@ function verifyDiagonalWinner() {
     const sum1 = gameTable[0][0] + gameTable[1][1] + gameTable[2][2]
     const sum2 = gameTable[0][2] + gameTable[1][1] + gameTable[2][0]
 
-    if (Math.abs(sum1) == 3 || Math.abs(sum2) == 3) {
+    if (Math.abs(sum1) == 3) {
+        colorPiecesWinner('diagonal1')
+        return gameTable[1][1]
+    }
+
+    if (Math.abs(sum2) == 3) {
+        colorPiecesWinner('diagonal2')
         return gameTable[1][1]
     }
     return false
@@ -336,27 +332,48 @@ function verifyDiagonalWinner() {
 function colorPiecesWinner(type, index) {
 
     if (type == 'row') {
-        const $fields = $rows[index].querySelectorAll('.row .field')
+        for (let i = 0; i < 3; i++) {
+            const $field = $fields[index * 3 + i]
 
-        $fields.forEach(function ($field) {
             $field.classList.add('color-winner')
 
             setTimeout(() => {
                 $field.classList.remove('color-winner')
-            }, TIME_OFF_RESET_FIELDS);
-        });
-    }
+            }, TIME_OFF_RESET_FIELDS)
+        }
 
-    if (type == 'column') {
-        $rows.forEach(function ($row) {
-            const $fields = $row.querySelectorAll('.row .field')
+    } else if (type == 'column') {
+        for (let i = 0; i < 3; i++) {
+            const $field = $fields[i * 3 + index]
 
-            $fields[index].classList.add('color-winner')
+            $field.classList.add('color-winner')
 
             setTimeout(() => {
-                $fields[index].classList.remove('color-winner')
-            }, TIME_OFF_RESET_FIELDS);
-        });
+                $field.classList.remove('color-winner')
+            }, TIME_OFF_RESET_FIELDS)
+        }
+
+    } else if (type == 'diagonal1') {
+        for (let i = 0; i < 3; i++) {
+            const $field = $fields[i * 3 + i]
+
+            $field.classList.add('color-winner')
+
+            setTimeout(() => {
+                $field.classList.remove('color-winner')
+            }, TIME_OFF_RESET_FIELDS)
+        }
+
+    } else if (type == 'diagonal2') {
+        for (let i = 0; i < 3; i++) {
+            const $field = $fields[i * 3 + (2 - i)]
+
+            $field.classList.add('color-winner')
+
+            setTimeout(() => {
+                $field.classList.remove('color-winner')
+            }, TIME_OFF_RESET_FIELDS)
+        }
     }
 }
 
@@ -375,4 +392,3 @@ function verifyDrawGame() {
 //     $switchPlayer2.classList.toggle('active-bot')
 //     $botName.classList.toggle('active-bot')
 // })
-
