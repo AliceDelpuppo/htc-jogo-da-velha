@@ -165,82 +165,85 @@ body {
         }
     }
 
-    .match-history {
+    .container-match-history {
         margin-bottom: 40px;
-
-        padding-right: 10px;
-
-        max-height: 240px;
-        overflow-y: auto;
-
-        > p {
-            margin-bottom: 20px;
-
-            text-align: center;
-
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .winner-history {
-            margin-bottom: 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .history-field {
-                padding: 6px 0 4px 16px;
-
-                width: 168px;
-                height: 50px;
-
-                background-color: #fff;
-                border-radius: 10px;
-
-                p {
-                    font-size: 14px;
-                    font-weight: 700;
-                    color: $text-color-main;
-
-                    &:first-child {
-                        color: $text-color-secondary;
-                        margin-bottom: 6px;
-                    }
-                }
-            }
-
-            span {
-                margin: 0 16px;
-
-                font-size: 14px;
+    
+            padding-right: 10px;
+    
+            max-height: 240px;
+            overflow-y: auto;
+    
+            > p {
+                margin-bottom: 20px;
+    
+                text-align: center;
+    
+                font-size: 16px;
+                font-weight: 700;
                 color: #fff;
             }
+        .match-history {
 
-            .scenario-winner {
-                display: flex;
-                flex-direction: column;
-                
-                .row-scenario-winner {
-                    display: flex;
-
-                    .scenario-winner-field {
-                        margin-bottom: 2px;
-                        margin-right: 2px;
-
-                        @include flex-center;
-
-                        width: 15px;
-                        height: 15px;
-                        background-color: #fff;
-                        border-radius: 2px;
     
+            .winner-history {
+                margin-bottom: 20px;
+    
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+    
+                .history-field {
+                    padding: 6px 0 4px 16px;
+    
+                    width: 168px;
+                    height: 50px;
+    
+                    background-color: #fff;
+                    border-radius: 10px;
+    
+                    p {
                         font-size: 14px;
                         font-weight: 700;
                         color: $text-color-main;
+    
+                        &:first-child {
+                            color: $text-color-secondary;
+                            margin-bottom: 6px;
+                        }
                     }
-                }                
+                }
+    
+                span {
+                    margin: 0 16px;
+    
+                    font-size: 14px;
+                    color: #fff;
+                }
+    
+                .scenario-winner {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .row-scenario-winner {
+                        display: flex;
+    
+                        .scenario-winner-field {
+                            margin-bottom: 2px;
+                            margin-right: 2px;
+    
+                            @include flex-center;
+    
+                            width: 15px;
+                            height: 15px;
+                            background-color: #fff;
+                            border-radius: 2px;
+        
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: $text-color-main;
+                        }
+                    }                
+                }
             }
         }
     }

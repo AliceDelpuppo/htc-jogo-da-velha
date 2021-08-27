@@ -181,54 +181,54 @@ body {
   letter-spacing: 1px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.container-left .match-history {
+.container-left .container-match-history {
   margin-bottom: 40px;
   padding-right: 10px;
   max-height: 240px;
   overflow-y: auto;
 }
-.container-left .match-history > p {
+.container-left .container-match-history > p {
   margin-bottom: 20px;
   text-align: center;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
 }
-.container-left .match-history .winner-history {
+.container-left .container-match-history .match-history .winner-history {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.container-left .match-history .winner-history .history-field {
+.container-left .container-match-history .match-history .winner-history .history-field {
   padding: 6px 0 4px 16px;
   width: 168px;
   height: 50px;
   background-color: #fff;
   border-radius: 10px;
 }
-.container-left .match-history .winner-history .history-field p {
+.container-left .container-match-history .match-history .winner-history .history-field p {
   font-size: 14px;
   font-weight: 700;
   color: #828282;
 }
-.container-left .match-history .winner-history .history-field p:first-child {
+.container-left .container-match-history .match-history .winner-history .history-field p:first-child {
   color: #45F391;
   margin-bottom: 6px;
 }
-.container-left .match-history .winner-history span {
+.container-left .container-match-history .match-history .winner-history span {
   margin: 0 16px;
   font-size: 14px;
   color: #fff;
 }
-.container-left .match-history .winner-history .scenario-winner {
+.container-left .container-match-history .match-history .winner-history .scenario-winner {
   display: flex;
   flex-direction: column;
 }
-.container-left .match-history .winner-history .scenario-winner .row-scenario-winner {
+.container-left .container-match-history .match-history .winner-history .scenario-winner .row-scenario-winner {
   display: flex;
 }
-.container-left .match-history .winner-history .scenario-winner .row-scenario-winner .scenario-winner-field {
+.container-left .container-match-history .match-history .winner-history .scenario-winner .row-scenario-winner .scenario-winner-field {
   margin-bottom: 2px;
   margin-right: 2px;
   display: flex;
