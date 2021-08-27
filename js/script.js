@@ -6,7 +6,9 @@ const $battlefield = document.querySelector('.battlefield')
 const $fields = $battlefield.querySelectorAll('.row .field')
 
 const $rows = document.querySelectorAll('.battlefield .row')
+
 const $containerHistoryMove = document.querySelector('.container-history-move')
+const $matchHistory = document.querySelector('.match-history')
 
 const $alertsGame = document.querySelector('.scoreboard p')
 const $nameInputPlayer1 = document.querySelector('.player-1-name input')
@@ -179,9 +181,11 @@ function resetVariablesAll() {
     clickButtonPlayer = false
     pointsPlayer1 = 0
     pointsPlayer2 = 0
-    moveHistory = []
     currentPlayer = P1_CODE
     lastStartPlayer = P1_CODE
+    moveHistory = []
+    scenaryHistory = []
+    $matchHistory.textContent = ''
 }
 
 function resetVariables() {
@@ -336,7 +340,6 @@ function printMoveHistory(currentPlayer, position) {
 
 function printScenaryHistory(scenaryHistory, winner) {
 
-    const $matchHistory = document.querySelector('.match-history')
     $matchHistory.innerHTML = ''
 
     scenaryHistory.forEach(function(gameResult){
