@@ -109,7 +109,7 @@ function play(i, j) {
             }
             scenaryHistory.push(gameResult)
 
-            printScenaryHistory(scenaryHistory)
+            printScenaryHistory(scenaryHistory, winner)
 
             if (winner == DRAW_GAME) {
                 $winnerName.textContent = 'Empatou'
@@ -334,20 +334,26 @@ function printMoveHistory(currentPlayer, position) {
 
 }
 
-function printScenaryHistory(scenaryHistory) {
+function printScenaryHistory(scenaryHistory, winner) {
 
     const $matchHistory = document.querySelector('.match-history')
     $matchHistory.innerHTML = ''
 
     scenaryHistory.forEach(function(gameResult){
-        const $winnerHistory = createWinnerHistory(gameResult)
+        const $winnerHistory = createWinnerHistory(gameResult, winner)
         $matchHistory.prepend($winnerHistory)
     });
 }
 
-function createWinnerHistory(gameResult) {
+function createWinnerHistory(gameResult, winner) {
 
-    const playerName = getPlayerName(gameResult.winner)
+    let playerName
+
+    if(winner == DRAW_GAME){
+        playerName = 'Empatou'
+    } else {
+        playerName = getPlayerName(gameResult.winner)
+    }
 
     // ------ Criação da div Winner History
     const $divWinnerHistory = document.createElement('div')
@@ -436,7 +442,7 @@ function getPlayerName(currentPlayer) {
         return player1Name
     } else if (currentPlayer == P2_CODE) {
         return player2Name
-    } else return 'Empatou'
+    }
 }
 
 function getPositionText(position) {
