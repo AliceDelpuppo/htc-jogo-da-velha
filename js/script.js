@@ -9,8 +9,8 @@ const $rows = document.querySelectorAll('.battlefield .row')
 const $containerHistoryMove = document.querySelector('.container-history-move')
 
 const $alertsGame = document.querySelector('.scoreboard p')
-const $namePlayer1 = document.querySelector('.player-1-name input')
-const $namePlayer2 = document.querySelector('.player-2-name input')
+const $nameInputPlayer1 = document.querySelector('.player-1-name input')
+const $nameInputPlayer2 = document.querySelector('.player-2-name input')
 const $winnerName = document.querySelector('.scoreboard .nameWinner span')
 
 const $pointsPlayer1 = document.querySelector('.player-1-points span')
@@ -36,11 +36,13 @@ let pointsPlayer2 = 0
 let gameTable = createTable()
 
 let moveHistory = []
+let scenaryHistory = []
 
 let currentPlayer = P1_CODE
 let lastStartPlayer = P1_CODE
 
 let permissionPlay = false
+let clickButtonPlayer = false
 
 for (let i = 0; i < $rows.length; i++) {
     const $row = $rows[i]
@@ -53,7 +55,7 @@ for (let i = 0; i < $rows.length; i++) {
 
             if (permissionPlay) {
                 play(i, j)
-            } else {
+            } else if (!clickButtonPlayer) {
                 alertNoPermissionPlay('Para iniciar, clique em Jogar')
             }
         })
@@ -62,30 +64,14 @@ for (let i = 0; i < $rows.length; i++) {
 
 $buttonStartGame.addEventListener('click', function (event) {
     // event.preventDefault()
-
     permissionPlay = true
+    clickButtonPlayer = true
 })
 
-// $buttonRestartGame.addEventListener('click', function(){
-
-// })
-
-
-function alertNoPermissionPlay(text) {
-    $alertsGame.textContent = text
-
-    setTimeout(() => {
-        $alertsGame.textContent = 'Placar'
-    }, TIME_OFF_RESET_ALERTS);
-}
-
-function stopGameForAMoment() {
-    permissionPlay = false
-
-    setTimeout(() => {
-        permissionPlay = true
-    }, TIME_STOP_GAME);
-}
+$buttonRestartGame.addEventListener('click', function () {
+    // event.preventDefault()
+    resetAllAll()
+})
 
 function createTable() {
     return [
@@ -116,16 +102,28 @@ function play(i, j) {
 
         if (winner) {
             // Alguém ganhou ou empatou
+            const tableCopy = copyTable(gameTable)
+            const gameResult = {
+                winner: currentPlayer,
+                table: tableCopy
+            }
+            scenaryHistory.push(gameResult)
+
+            printScenaryHistory(scenaryHistory)
+
             if (winner == DRAW_GAME) {
                 $winnerName.textContent = 'Empatou'
 
                 givePoint(winner)
+
                 printPoints()
+
                 clearBattlerfield()
                 clearFieldWinnerName()
                 clearFieldHistoryMove()
 
                 nextPlayerStart()
+
                 resetVariables()
                 stopGameForAMoment()
 
@@ -139,8 +137,10 @@ function play(i, j) {
                 // Imprimir o cenário da partida toda no campo direito
 
                 givePoint(winner)
+
                 printPoints()
                 printWinnerName(winner)
+
                 clearBattlerfield()
                 clearFieldWinnerName()
                 clearFieldHistoryMove()
@@ -148,9 +148,10 @@ function play(i, j) {
                 nextPlayerStart()
 
                 resetVariables()
-
                 stopGameForAMoment()
             }
+
+
         } else {
             // Ninguém ganhou ainda. Ou seja, jogo continua
             // Troca o current player
@@ -165,6 +166,46 @@ function play(i, j) {
         warningFullField(i, j)
         alertNoPermissionPlay('O campo está cheio')
     }
+}
+
+function resetAllAll() {
+    resetVariablesAll()
+    printPoints()
+}
+
+function resetVariablesAll() {
+    resetVariables()
+    permissionPlay = false
+    clickButtonPlayer = false
+    pointsPlayer1 = 0
+    pointsPlayer2 = 0
+    moveHistory = []
+    currentPlayer = P1_CODE
+    lastStartPlayer = P1_CODE
+}
+
+function resetVariables() {
+    P1_CODE = 1
+    P2_CODE = -1
+    EMPTY_CODE = 0
+    moveHistory = []
+    gameTable = createTable()
+}
+
+function alertNoPermissionPlay(text) {
+    $alertsGame.textContent = text
+
+    setTimeout(() => {
+        $alertsGame.textContent = 'Placar'
+    }, TIME_OFF_RESET_ALERTS);
+}
+
+function stopGameForAMoment() {
+    permissionPlay = false
+
+    setTimeout(() => {
+        permissionPlay = true
+    }, TIME_STOP_GAME);
 }
 
 function warningFullField(i, j) {
@@ -185,14 +226,6 @@ function nextPlayerStart() {
         currentPlayer = P1_CODE
         lastStartPlayer = P1_CODE
     }
-}
-
-function resetVariables() {
-    P1_CODE = 1
-    P2_CODE = -1
-    EMPTY_CODE = 0
-    moveHistory = []
-    gameTable = createTable()
 }
 
 function clearFieldHistoryMove() {
@@ -225,6 +258,8 @@ function givePoint(winner) {
     if (winner == P1_CODE) pointsPlayer1++
     if (winner == P2_CODE) pointsPlayer2++
 }
+
+
 
 function printWinnerName(winner) {
     $winnerName.textContent = getPlayerName(winner) + ' Ganhou'
@@ -299,9 +334,99 @@ function printMoveHistory(currentPlayer, position) {
 
 }
 
+function printScenaryHistory(scenaryHistory) {
+
+    const $matchHistory = document.querySelector('.match-history')
+    $matchHistory.innerHTML = ''
+
+    scenaryHistory.forEach(function(gameResult){
+        const $winnerHistory = createWinnerHistory(gameResult)
+        $matchHistory.prepend($winnerHistory)
+    });
+}
+
+function createWinnerHistory(gameResult) {
+
+    const playerName = getPlayerName(gameResult.winner)
+
+    // ------ Criação da div Winner History
+    const $divWinnerHistory = document.createElement('div')
+    $divWinnerHistory.classList.add('winner-history')
+    // ------ /Criação da div Winner History
+    
+
+    // ------ Criação da div history field
+    const $divHistoryField = document.createElement('div')
+    $divHistoryField.classList.add('history-field')
+
+    const $pWinnerLabel = document.createElement('p')
+    $pWinnerLabel.textContent = 'Vencedor'
+
+    const $pWinnerName = document.createElement('p')
+    $pWinnerName.textContent = playerName
+
+    $divHistoryField.append($pWinnerLabel, $pWinnerName)
+    // ------ /Criação da div history field
+
+
+    // ------ Criação da label de nome Cenário
+    const $divLabelScenary = document.createElement('div')
+    const $spanLabelScenary = document.createElement('span')
+    $spanLabelScenary.textContent = 'Cenário'
+    $divLabelScenary.appendChild($spanLabelScenary)
+    // ------ /Criação da label de nome Cenário
+
+
+    const $scenaryWinner = createScenaryWinner(gameResult)
+    // console.log($scenaryWinner)
+
+    $divWinnerHistory.append($divHistoryField, $divLabelScenary, $scenaryWinner)
+
+    return $divWinnerHistory
+}
+
+function createRowScenaryWinner(gameResult, row) {
+    const $divRowScenaryWinner = document.createElement('div')
+    $divRowScenaryWinner.classList.add('row-scenario-winner')
+
+    const gameTable = gameResult.table
+
+    for (let i = 0; i < 3; i++) {
+        const $divScenaryWinnerField = document.createElement('div')
+        $divScenaryWinnerField.classList.add('scenario-winner-field')
+
+        const piece = gameTable[row][i]
+
+        if(piece == P1_CODE) {
+            $divScenaryWinnerField.textContent = 'X'
+        } else if(piece == P2_CODE){
+            $divScenaryWinnerField.textContent = '0'
+        } else {
+            $divScenaryWinnerField.textContent = ''
+        }
+
+        $divRowScenaryWinner.appendChild($divScenaryWinnerField)
+    }
+
+    return $divRowScenaryWinner
+}
+
+function createScenaryWinner(gameResult) { 
+    const $divScenaryWinner = document.createElement('div')
+    $divScenaryWinner.classList.add('scenario-winner')
+
+    for (let i = 0; i < 3; i++) {
+        const $rowScenaryWinner = createRowScenaryWinner(gameResult, i)
+
+        $divScenaryWinner.appendChild($rowScenaryWinner)
+    }
+
+    return $divScenaryWinner
+}
+
 function getPlayerName(currentPlayer) {
-    const player1Name = $namePlayer1.value
-    const player2Name = $namePlayer2.value
+    const player1Name = $nameInputPlayer1.value
+    const player2Name = $nameInputPlayer2.value
 
     if (currentPlayer == P1_CODE && player1Name == '') {
         return 'Jogador 1'
