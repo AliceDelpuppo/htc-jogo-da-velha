@@ -104,14 +104,24 @@ function play(i, j) {
 
         if (winner) {
             // Alguém ganhou ou empatou
-            const tableCopy = copyTable(gameTable)
+            const tableCopy = copyTable(gameTable)            
+
+            let winnerName
+
+            if(winner == DRAW_GAME){
+                winnerName = 'Empatou'
+            } else {
+                winnerName = getPlayerName(winner)
+            }            
+
             const gameResult = {
-                winner: currentPlayer,
+                winner: winnerName,
                 table: tableCopy
-            }
+            }            
+
             scenaryHistory.push(gameResult)
 
-            printScenaryHistory(scenaryHistory, winner)
+            printScenaryHistory(scenaryHistory)
 
             if (winner == DRAW_GAME) {
                 $winnerName.textContent = 'Empatou'
@@ -152,8 +162,6 @@ function play(i, j) {
                 resetVariables()
                 stopGameForAMoment()
             }
-
-
         } else {
             // Ninguém ganhou ainda. Ou seja, jogo continua
             // Troca o current player
@@ -338,31 +346,24 @@ function printMoveHistory(currentPlayer, position) {
 
 }
 
-function printScenaryHistory(scenaryHistory, winner) {
+function printScenaryHistory(scenaryHistory) {
 
     $matchHistory.innerHTML = ''
 
-    scenaryHistory.forEach(function(gameResult){
-        const $winnerHistory = createWinnerHistory(gameResult, winner)
+    scenaryHistory.forEach(function (gameResult) {
+        const $winnerHistory = createWinnerHistory(gameResult)
+
         $matchHistory.prepend($winnerHistory)
     });
 }
 
-function createWinnerHistory(gameResult, winner) {
-
-    let playerName
-
-    if(winner == DRAW_GAME){
-        playerName = 'Empatou'
-    } else {
-        playerName = getPlayerName(gameResult.winner)
-    }
+function createWinnerHistory(gameResult) {
 
     // ------ Criação da div Winner History
     const $divWinnerHistory = document.createElement('div')
     $divWinnerHistory.classList.add('winner-history')
     // ------ /Criação da div Winner History
-    
+
 
     // ------ Criação da div history field
     const $divHistoryField = document.createElement('div')
@@ -372,7 +373,7 @@ function createWinnerHistory(gameResult, winner) {
     $pWinnerLabel.textContent = 'Vencedor'
 
     const $pWinnerName = document.createElement('p')
-    $pWinnerName.textContent = playerName
+    $pWinnerName.textContent = gameResult.winner
 
     $divHistoryField.append($pWinnerLabel, $pWinnerName)
     // ------ /Criação da div history field
@@ -406,9 +407,9 @@ function createRowScenaryWinner(gameResult, row) {
 
         const piece = gameTable[row][i]
 
-        if(piece == P1_CODE) {
+        if (piece == P1_CODE) {
             $divScenaryWinnerField.textContent = 'X'
-        } else if(piece == P2_CODE){
+        } else if (piece == P2_CODE) {
             $divScenaryWinnerField.textContent = '0'
         } else {
             $divScenaryWinnerField.textContent = ''
@@ -420,7 +421,7 @@ function createRowScenaryWinner(gameResult, row) {
     return $divRowScenaryWinner
 }
 
-function createScenaryWinner(gameResult) { 
+function createScenaryWinner(gameResult) {
     const $divScenaryWinner = document.createElement('div')
     $divScenaryWinner.classList.add('scenario-winner')
 
