@@ -164,7 +164,7 @@ function play(i, j) {
             }
         } else {
             // Ninguém ganhou ainda. Ou seja, jogo continua
-            // Troca o current player
+            // Troca o currentplayer
             if (currentPlayer == P1_CODE) {
                 currentPlayer = P2_CODE
             } else {
