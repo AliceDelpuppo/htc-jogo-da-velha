@@ -99,7 +99,8 @@ function play(i, j) {
         }
 
         moveHistory.push(move)
-        printMoveHistory(move.player, move.position)
+        // printMoveHistory(move.player, move.position)
+        printMoveHistory(moveHistory)
         printTable(gameTable)
 
         if (winner) {
@@ -300,11 +301,12 @@ function printTable(table) {
     })
 }
 
-function printMoveHistory(currentPlayer, position) {
+function createHistoryMove(move) {
+    const currentPlayer = move.player
+    const position = move.position    
 
     const divHistoryMoveCreate = document.createElement('div')
     divHistoryMoveCreate.classList.add('history-move')
-    $containerHistoryMove.appendChild(divHistoryMoveCreate)
 
     const divPieceLastMoveCreate = document.createElement('div')
     divPieceLastMoveCreate.classList.add('piece-last-move')
@@ -344,6 +346,20 @@ function printMoveHistory(currentPlayer, position) {
     spanPieceLastMoveCreate.appendChild(textPieceLastMove)
     spanPositionLastMoveCreate.appendChild(textPositionLastMove)
 
+    return divHistoryMoveCreate
+}
+
+function printMoveHistory(moveHistory){
+    $containerHistoryMove.innerHTML = ''
+    moveHistory.forEach((move) => {
+        const historyMove = createHistoryMove(move)
+        
+        $containerHistoryMove.appendChild(historyMove)
+
+        historyMove.addEventListener('click', function(){
+            printTable(move.table)
+        })
+    });
 }
 
 function printScenaryHistory(scenaryHistory) {
